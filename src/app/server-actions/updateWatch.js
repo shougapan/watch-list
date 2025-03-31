@@ -35,6 +35,8 @@ export async function updateWatch(formData){
         return;
     }
 
+    console.log(data)
+
     revalidatePath('/watch-list')
 
     return {message: 'Success'}
