@@ -1,0 +1,52 @@
+Challenge 1 --
+https://www.youtube.com/watch?v=5xu_KH8QSk4&t=64s
+
+1. create a new project in supabase. Top left to the right of English Steps (free), there is a project list drop. You can create a new project from there. 
+
+2. create a migration with:
+npx supabase migration new watches
+
+
+3. Create a table for watches in the SQL editor:
+
+create table watches (
+  id bigint primary key generated always as identity,
+  user_id uuid references auth.users not null,
+  brand text,
+  model text,
+  reference_number text,
+  created_at timestamp with time zone default now(),
+  updated_at timestamp with time zone
+);
+
+create index on watches(user_id);
+
+alter table watches enable row level security;
+
+create policy "Users can view their own watches." on watches
+    for select using(auth.uid() = user_id);
+
+create policy "Users can add new watches." on watches
+    for insert with check(auth.uid() = user_id);
+
+create policy "Users can update their own watches." on watches
+    for update using(auth.uid() = user_id);    
+
+create policy "Users can delete their own watches." on watches
+    for delete using(auth.uid() = user_id);
+
+
+You need to install these packages in your project:
+npm install @supabase/supabase-js
+npm install @supabase/auth-helpers-nextjs
+
+
+Create a middleware in the src folder which triggers when we go to the  "watch-list" or "/" routes. The middleware detects whether there is a user, we will redirect to the home page "/" if there isn't.
+
+install a package called:
+@supabase/auth-ui-react
+
+Create components folder in the app one and run this code
+
+
+When you deploy your app, make sure you change 
