@@ -1,3 +1,6 @@
+Creating a new NEXT project
+npx create-next-app@latest your-project-name
+
 Challenge 1 --
 https://www.youtube.com/watch?v=5xu_KH8QSk4&t=64s
 
@@ -50,3 +53,36 @@ Create components folder in the app one and run this code
 
 
 When you deploy your app, make sure you change 
+
+
+How to push a project to GIT:
+Go to Git up landing page. Click on the + button top right and click new repository.
+Give it a name
+Choose public or private 
+in Your terminal, 
+git add .
+git commit -m "PROJECT NAME"
+then
+git remote add origin https://github.com/shougapan/routing-demo.git
+then
+git branch -M main
+then 
+git push -u origin main
+
+Deploying on Vercel
+Go to Vercel dashboard
+click on "add new" (top right)
+import PROJECTNAME
+On this page, you can add the environment variables of your project if there are any eg Supabase, Stripe, etc:
+key - value
+then press "deploy"
+In order to remotely update a project from the terminal, follow these steps:
+git add .
+git commit -m "message"
+git push (Changes should be reflected immediately in your webpage)
+
+
+How to delete a website:
+go to overview page
+click on the 3 dots … top right of the project you want to delete
+Settings
